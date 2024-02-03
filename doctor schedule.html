@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Doctor Schedule</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="Index.css">
+    <!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+      
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: whitesmoke;">
+        <div class="container-fluid">
+          <img src="images/logo.png"  alt="" style="width: 5rem;">
+          <a class="navbar-brand" href="#">Hospital Management System</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+      
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+                <a class="nav-link" href="Index.html">Home</a>
+              </li>  
+      <li class="nav-item">
+                <a class="nav-link" href="Index.html#contact">Contact</a>
+              </li>
+              
+                  
+
+                  <li class="nav-item dropdown">
+                    <a class="btn btn-outline-info dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Our Services</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownId">
+                      <a class="dropdown-item" href="book apointment.html"><img src="images/apoitment" style="width: 2rem ;margin-right: 1%;">Book an Appointment</a>
+                      <a class="dropdown-item" href="doctor schedule.html"><img src="images/scdule.jfif" style="width: 2rem;margin-right: 1%;">Doctor Schedule</a>
+                      <a class="dropdown-item" href="departments.html"><img src="images/departmnt.png" style="width: 2rem;margin-right: 1%;">Departments</a>
+                      <a class="dropdown-item" href="lab reports.html"><img src="images/repott.jpg" style="width: 2rem;margin-right: 1%;">Lab reports</a>
+                    </div>
+                  </li>
+
+                
+              
+              <li>
+              
+            </li>  
+            </div>
+              </li>
+              
+            
+               
+                
+
+          
+      
+           
+      </ul>
+      </div>
+      </div>
+      </nav>
+      <br>
+      <br>
+      <br>
+      <br>
+      
+   
+      <div class="container-fluid">
+
+    <a class="btn btn-primary" href="Index.html">Back to main page</a>
+</div>
+<br>
+<br>
+
+
+
+<h2 style="text-align: center;">Doctors Schedule</h2>
+<br>
+
+    
+<div>
+<?php
+$database = "mysql:host=localhost;dbname=doctor schedule;";
+$Username= "root";
+
+$Password = "";
+
+
+
+
+$conn = new PDO($database, $Username, $Password);
+
+    if(!$conn){
+        die("Connection failed");
+    }
+    else{
+        echo "Connection Established";
+    }
+  
+ $query="Select * from doctors";
+ 
+ $d=$conn->query($query);
+ ?>
+     <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   
+<div class="container">
+ <table class="table table-hover table-dark" >
+
+ <tr>
+ <th scope="col">Sr.</th>
+ <th scope="col">Doctors</th>
+ <th scope="col">Department</th>
+ <th scope="col">Timings</th>
+ <th scope="col">Days</th>
+
+
+ </tr>
+  
+ </div>
+ <?php 
+ foreach($d as $data)
+ {
+     ?>
+     <tr>
+     <td><?php echo $data["Sr."]; ?></td>
+     <td><?php echo $data["Doctors"]; ?></td>
+     <td><?php echo $data["Department"]; ?></td>
+     <td><?php echo $data["Timings"]; ?></td>
+     <td><?php echo $data["Days"]; ?></td>
+     </tr>
+<?php
+ }
+?>
+ </table>
+</div>
+    <br>
+    <div>
+    <footer class="bg-dark text-center text-lg-start text-light">
+      <br>
+      <h3>Follow us on social media!!!</h3>
+    <a href="#" class="fa fa-facebook"></a>
+    <a href="#" class="fa fa-twitter" style="color:lightblue;"></a>
+    <a href="#" class="fa fa-youtube-play" style="color: red;"></a>
+    <a href="#" class="fa fa-linkedin-square" style="color: white;"></a>
+    <a href="#" class="fa fa-github-square" style="color: orange;"></a>
+    </footer>
+    <footer class="bg-dark text-center text-lg-start text-light ">
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2021 Copyright All Right Reserved
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
